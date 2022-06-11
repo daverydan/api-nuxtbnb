@@ -1,17 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Resources\Type\TypeCollection;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class TypeController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth:sanctum');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return response()->json(auth()->user());
+        return new TypeCollection(Type::all());
     }
 
     /**
@@ -36,10 +32,10 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Type $type)
     {
         //
     }
@@ -48,10 +44,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Type $type)
     {
         //
     }
@@ -59,10 +55,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Type $type)
     {
         //
     }

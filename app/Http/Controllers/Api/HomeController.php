@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Home\HomeCollection;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class HomeController extends Controller
 {
-    public function __construct()
-    {
-        // $this->middleware('auth:sanctum');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +16,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return response()->json(auth()->user());
+        return new HomeCollection(Home::all());
     }
 
     /**
@@ -36,10 +33,10 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Home $home)
     {
         //
     }
@@ -48,10 +45,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Home $home)
     {
         //
     }
@@ -59,10 +56,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Home  $home
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Home $home)
     {
         //
     }
